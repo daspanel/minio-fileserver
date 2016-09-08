@@ -1,0 +1,8 @@
+#!/usr/bin/with-contenv sh
+
+# Setup Minio credentials
+export MINIO_ACCESS_KEY=${DASPANEL_GUUID:0:20}
+export MINIO_SECRET_KEY="$DASPANEL_MASTER_PASSWORD"
+
+exec /usr/bin/minio server "/opt/daspanel/data"
+

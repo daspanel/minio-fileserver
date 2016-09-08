@@ -1,0 +1,30 @@
+
+version: '2'
+services:
+    daspanel-minio-fileserver:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: daspanel/minio-fileserver
+        volumes:
+            - daspanel-data:/opt/daspanel/data
+        networks:
+            - frontend
+            - backend
+        ports:
+            - "9000:9000"
+        env_file:
+            - daspanel.env
+
+volumes:
+    daspanel-data:
+        external:
+            name: daspanel-data
+
+networks:  
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+
