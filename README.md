@@ -31,6 +31,7 @@ docker run -e DASPANEL_MASTER_EMAIL=my@email.com daspanel/minio-fileserver:lates
 ## Features
 
 * Alpine Linux with S6 overlay
+* Minio S3 server.
 
 ## Additional docs and credits
 
