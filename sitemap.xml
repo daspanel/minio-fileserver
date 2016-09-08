@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
+    <url>
+     <loc>https://daspanel.github.io/minio-fileserver/</loc>
+     <lastmod>2016-09-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+        
+    <url>
+     <loc>https://daspanel.github.io/minio-fileserver/help/</loc>
+     <lastmod>2016-09-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://daspanel.github.io/minio-fileserver/help/compose/</loc>
+     <lastmod>2016-09-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://daspanel.github.io/minio-fileserver/help/advanced/</loc>
+     <lastmod>2016-09-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://daspanel.github.io/minio-fileserver/help/development/</loc>
+     <lastmod>2016-09-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://daspanel.github.io/minio-fileserver/howto/</loc>
+     <lastmod>2016-09-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+    <url>
+     <loc>https://daspanel.github.io/minio-fileserver/issues/</loc>
+     <lastmod>2016-09-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://daspanel.github.io/minio-fileserver/contributing/</loc>
+     <lastmod>2016-09-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+        
+    <url>
+     <loc>https://daspanel.github.io/minio-fileserver/authors/</loc>
+     <lastmod>2016-09-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://daspanel.github.io/minio-fileserver/changelog/</loc>
+     <lastmod>2016-09-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+</urlset>

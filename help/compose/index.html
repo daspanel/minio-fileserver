@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="no-js ie6"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8"><![endif]-->
+<!--[if IE 9 ]><html class="no-js ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    
+      
+        <title>Usingh docker-compose - Minio Fileserver</title>
+      
+      
+      
+        <link rel="canonical" href="https://daspanel.github.io/minio-fileserver/help/compose/">
+      
+      
+        <meta name="author" content="Abner G Jacobsen">
+      
+    
+    <meta property="og:url" content="https://daspanel.github.io/minio-fileserver/help/compose/">
+    <meta property="og:title" content="Minio Fileserver">
+    <meta property="og:image" content="https://daspanel.github.io/minio-fileserver/help/compose//../../images/logo.png">
+    <meta name="apple-mobile-web-app-title" content="Minio Fileserver">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+      <link rel="apple-touch-icon" href="../../images/logo.png">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon-e565ddfa3b.ico">
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon-e565ddfa3b.ico">
+    <style>
+      @font-face {
+      	font-family: 'Icon';
+      	src: url('../../assets/fonts/icon.eot?52m981');
+      	src: url('../../assets/fonts/icon.eot?#iefix52m981')
+               format('embedded-opentype'),
+      		   url('../../assets/fonts/icon.woff?52m981')
+               format('woff'),
+      		   url('../../assets/fonts/icon.ttf?52m981')
+               format('truetype'),
+      		   url('../../assets/fonts/icon.svg?52m981#icon')
+               format('svg');
+      	font-weight: normal;
+      	font-style: normal;
+      }
+    </style>
+    <link rel="stylesheet" href="../../assets/stylesheets/application-a422ff04cc.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/palettes-05ab2406df.css">
+    
+    
+      
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Mono">
+      <style>
+        body, input {
+          font-family: 'Roboto', Helvetica, Arial, sans-serif;
+        }
+        pre, code {
+          font-family: 'Roboto Mono', 'Courier New', 'Courier', monospace;
+        }
+      </style>
+    
+    
+    <script src="../../assets/javascripts/modernizr-4ab42b99fd.js"></script>
+    
+  </head>
+  
+  
+  
+  <body class="palette-primary-blue palette-accent-light-blue">
+    
+      
+      
+    
+    <div class="backdrop">
+      <div class="backdrop-paper"></div>
+    </div>
+    <input class="toggle" type="checkbox" id="toggle-drawer">
+    <input class="toggle" type="checkbox" id="toggle-search">
+    <label class="toggle-button overlay" for="toggle-drawer"></label>
+    <header class="header">
+      <nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        
+          <span class="path">
+            
+              
+                User Guide <i class="icon icon-link"></i>
+              
+            
+          </span>
+        
+        Usingh docker-compose
+      </div>
+    </div>
+    
+    
+      
+      <div class="button button-github" role="button" aria-label="GitHub">
+        <a href="https://github.com/daspanel" title="@daspanel on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+      </div>
+    
+    <div class="button button-search" role="button" aria-label="Search">
+      <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
+    </div>
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+    </header>
+    <main class="main">
+      
+      <div class="drawer">
+        <nav aria-label="Navigation">
+  
+  <a href="https://github.com/daspanel/minio-fileserver" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="../../images/logo.png">
+        </div>
+      
+      <div class="name">
+        <strong>
+          Minio Fileserver
+          <span class="version">
+            0.1.0
+          </span>
+        </strong>
+        
+          <br>
+          daspanel/minio-fileserver
+        
+      </div>
+    </div>
+  </a>
+  <div class="scrollable">
+    <div class="wrapper">
+      
+        <ul class="repo">
+          <li class="repo-download">
+            
+            <a href="https://github.com/daspanel/minio-fileserver/archive/0.1.0.zip" target="_blank" title="Download" data-action="download">
+              <i class="icon icon-download"></i> Download
+            </a>
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/daspanel/minio-fileserver/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+      
+      <div class="toc">
+        <ul>
+          
+            
+  <li>
+    <a class="" title="Home" href="../..">
+      Home
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <span class="section">User Guide</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Basic" href="../">
+      Basic
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="current" title="Usingh docker-compose" href="./">
+      Usingh docker-compose
+    </a>
+    
+      
+        
+      
+      
+        <ul>
+          
+            <li class="anchor">
+              <a title="Overview" href="#overview">
+                Overview
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Quick Start" href="#quick-start">
+                Quick Start
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Another usages" href="#another-usages">
+                Another usages
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Customization" href="#customization">
+                Customization
+              </a>
+            </li>
+          
+        </ul>
+      
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Advanced" href="../advanced/">
+      Advanced
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Development" href="../development/">
+      Development
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="How To" href="../../howto/">
+      How To
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="Issues" href="../../issues/">
+      Issues
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <a class="" title="Contributing" href="../../contributing/">
+      Contributing
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <span class="section">About</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Authors" href="../../authors/">
+      Authors
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Changelog" href="../../changelog/">
+      Changelog
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+        </ul>
+        
+          <hr>
+          <span class="section">The author</span>
+          <ul>
+            
+            
+              
+              <li>
+                <a href="https://github.com/daspanel" target="_blank" title="@daspanel on GitHub">
+                  @daspanel on GitHub
+                </a>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+      </div>
+      <article class="article">
+        <div class="wrapper">
+          
+          <h1 id="using-docker-compose">Using docker-compose</h1>
+<h2 id="overview">Overview</h2>
+<p>You can use the <code>docker-compose.yml</code> associated with this image to have more 
+advanced control on his usage. See the contents of the docker-compose.yml file 
+to familiarize yourself with its features.</p>
+<p><em>The <code>docker-compose</code> command is an powerfull member of the Docker system and 
+is highly recommended that you know his documentation: 
+<a href="https://docs.docker.com/compose/">https://docs.docker.com/compose/</a></em></p>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="create-a-docker-volume-to-store-permanent-data">Create a Docker volume to store permanent data</h3>
+<pre><code class="sh">docker volume create --name=daspanel-data
+</code></pre>
+
+<h3 id="start-container">Start container:</h3>
+<pre><code class="sh">docker-compose up
+</code></pre>
+
+<p>This will start an new docker container using 
+<code>daspanel/minio-fileserver</code> as base image. 
+<a href="https://docs.docker.com/compose/reference/up/">?</a></p>
+<h3 id="stop-container">Stop container:</h3>
+<pre><code class="sh">docker-compose stop
+</code></pre>
+
+<p>Stop the running conatiner create before with the <code>docker-compose up</code> command. 
+<a href="https://docs.docker.com/compose/reference/stop/">?</a></p>
+<h3 id="remove-stoped-containers">Remove stoped containers:</h3>
+<pre><code class="sh">docker-compose rm
+</code></pre>
+
+<p>Use this command to remove stopped containers create before with the 
+<code>docker-compose up</code> command. 
+<a href="https://docs.docker.com/compose/reference/rm/">?</a>  </p>
+<h2 id="another-usages">Another usages</h2>
+<h3 id="shell-access-to-the-container">Shell access to the container</h3>
+<p>In order to run the container and get access to a shell on it you can do:</p>
+<pre><code class="sh">docker-compose run daspanel-minio-fileserver /bin/sh
+</code></pre>
+
+<p>where <code>daspanel-minio-fileserver</code> must be one of the 
+definied services in your <code>docker-compose.yml</code>. See below relevant content of 
+the compose file:</p>
+<pre><code class="yaml">version: '2'
+services:
+    daspanel-minio-fileserver:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ...
+</code></pre>
+
+<h2 id="customization">Customization</h2>
+<p>The sample <code>docker-compose.yml</code> file in this project it's only an start point for 
+your convenience. Fell free to change it for your specific needs.</p>
+          <aside class="copyright" role="note">
+            
+              Copyright (c) 2016 Abner G Jacobsen &ndash;
+            
+            Documentation built with
+            <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
+            using the
+            <a href="http://squidfunk.github.io/mkdocs-material/" target="_blank">
+              Material
+            </a>
+            theme.
+          </aside>
+          
+            <footer class="footer">
+              
+  <nav class="pagination" aria-label="Footer">
+    <div class="previous">
+      
+        <a href="../" title="Basic">
+          <span class="direction">
+            Previous
+          </span>
+          <div class="page">
+            <div class="button button-previous" role="button" aria-label="Previous">
+              <i class="icon icon-back"></i>
+            </div>
+            <div class="stretch">
+              <div class="title">
+                Basic
+              </div>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+    <div class="next">
+      
+        <a href="../advanced/" title="Advanced">
+          <span class="direction">
+            Next
+          </span>
+          <div class="page">
+            <div class="stretch">
+              <div class="title">
+                Advanced
+              </div>
+            </div>
+            <div class="button button-next" role="button" aria-label="Next">
+              <i class="icon icon-forward"></i>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+  </nav>
+
+            </footer>
+          
+        </div>
+      </article>
+      <div class="results" role="status" aria-live="polite">
+        <div class="scrollable">
+          <div class="wrapper">
+            <div class="meta"></div>
+            <div class="list"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      var base_url = '../..';
+      var repo_id  = 'daspanel/minio-fileserver';
+    </script>
+    <script src="../../assets/javascripts/application-997097ee0c.js"></script>
+    
+    
+  </body>
+</html>
