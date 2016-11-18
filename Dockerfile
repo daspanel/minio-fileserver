@@ -1,5 +1,4 @@
-
-FROM daspanel/alpine-base
+FROM daspanel/alpine-base-edge
 MAINTAINER Abner G Jacobsen - http://daspanel.com <admin@daspanel.com>
 
 ENV TZ="UTC"
@@ -12,28 +11,27 @@ ENV MINIO_REPO https://${MINIO_PATH}.git
 ENV MINIO_BRANCH master
 
 ENV GOPATH /usr/local
-ENV GO15VENDOREXPERIMENT 1
+ENV GO17VENDOREXPERIMENT 1
 
-RUN apk update && \
-  apk add \
-    build-base \
-    go \
-    git && \
-  git clone \
-    -b ${MINIO_BRANCH} \
-    ${MINIO_REPO} \
-    /usr/local/src/${MINIO_PATH} && \
-  cd \
-    /usr/local/src/${MINIO_PATH} && \
-  go build \
-    -o /usr/bin/minio && \
-  apk del \
-    build-base \
-    go \
-    git && \
-  rm -rf \
-    /var/cache/apk/* \
-    /usr/local/*
+RUN set -ex \
+    && apk add --no-cache ca-certificates \
+    && apk add --no-cache --virtual .build-deps \
+        bash gcc musl-dev openssl go git \
+
+    && git clone \
+        -b ${MINIO_BRANCH} \
+        ${MINIO_REPO} \
+        /usr/local/src/${MINIO_PATH} \
+  
+    && cd /usr/local/src/${MINIO_PATH} \
+    && go build -o /usr/bin/minio \
+
+    && apk del .build-deps \
+    
+    && rm -rf \
+        /var/cache/apk/* \
+        /usr/local/*
+    
 
 VOLUME ["/opt/daspanel/data", "/opt/daspanel/log"]
 
