@@ -14,7 +14,6 @@ ENV GOPATH /usr/local
 ENV GO17VENDOREXPERIMENT 1
 
 RUN set -ex \
-    && apk add --no-cache ca-certificates \
     && apk add --no-cache --virtual .build-deps \
         bash gcc musl-dev openssl go git \
 
