@@ -23,3 +23,6 @@ test/
 
 # App source code
 src/
+
+# App data dir
+data/

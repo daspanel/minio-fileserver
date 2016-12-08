@@ -50,6 +50,8 @@ help:
 	@echo "make clean-pyc             remove Python file artifacts."
 	@echo "make clean-test            remove test and coverage artifacts."
 	@echo "make run-sh                run current image version with interactive shell (/bin/sh)."
+	@echo "make compose-dev-up        run 'docker-compose up -d' using docker-compose.dev.yml file."
+	@echo "make compose-dev-down      run 'docker-compose down' using docker-compose.dev.yml file."
 	@echo "make gen-changelog         auto generate CHANGELOG.md file."
 	@echo "make mkdocs-gen            generate mkdocs html documentation"
 	@echo "make mkdocs-serve          run local mkdocs server to test html documentation"
@@ -76,6 +78,12 @@ gen-changelog:
 
 run-sh: 
 	docker run -it $(IMAGE):$(VERSION) /bin/sh
+
+compose-dev-up:
+	docker-compose --file docker-compose.dev.yml up -d
+
+compose-dev-down:
+	docker-compose --file docker-compose.dev.yml down
 
 lint:
 	docker run --rm -i lukasmartinelli/hadolint < Dockerfile

@@ -1,6 +1,14 @@
 # App source code
 src/
 
+# App data dir
+data/
+
+# Dev only files, maybe contain secrets
+docker-compose.dev.yml
+daspanel.dev.env
+smtp.dev.env
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
