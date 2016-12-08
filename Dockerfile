@@ -1,17 +1,23 @@
 FROM daspanel/alpine-base-edge
 MAINTAINER Abner G Jacobsen - http://daspanel.com <admin@daspanel.com>
 
-ENV TZ="UTC"
+# Set default env variables
+ENV \
+    # Stop container initialization if error occurs in cont-init.d, fix-attrs.d script's
+    S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
 
-# Stop container initialization if error occurs in cont-init.d fix-attrs.d script's
-ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
+    # Timezone
+    TZ="UTC" \
 
-ENV MINIO_PATH github.com/minio/minio
-ENV MINIO_REPO https://${MINIO_PATH}.git
-ENV MINIO_BRANCH master
+    # S6 overlay version
+    S6_OVERLAY_VERSION=v1.18.1.5 \
 
-ENV GOPATH /usr/local
-ENV GO17VENDOREXPERIMENT 1
+    # Minio settings
+    MINIO_PATH=github.com/minio/minio \
+    MINIO_REPO=https://github.com/minio/minio.git \
+    MINIO_BRANCH=master \
+    GOPATH=/usr/local \
+    GO17VENDOREXPERIMENT=1
 
 RUN set -ex \
     && apk add --no-cache --virtual .build-deps \
