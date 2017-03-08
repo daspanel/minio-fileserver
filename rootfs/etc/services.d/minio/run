@@ -1,8 +1,35 @@
 #!/usr/bin/with-contenv sh
 
+# unless this has already been defined, set
+if [ -z "$DASPANEL_HOST" ]; then
+    export DASPANEL_HOST="daspanel.site"
+fi
+S3_BROWSER_URL="http://s3.svc.$DASPANEL_HOST"
+S3_ENDPOINT="http://s3.svc.$DASPANEL_HOST"
+
 # Setup Minio credentials
 export MINIO_ACCESS_KEY=${DASPANEL_GUUID:0:20}
 export MINIO_SECRET_KEY="$DASPANEL_MASTER_PASSWORD"
+
+S3_BROWSER_URL="http://s3.svc.$DASPANEL_HOST"
+S3_ENDPOINT="http://s3.svc.$DASPANEL_HOST"
+
+touch /opt/daspanel/data/$DASPANEL_GUUID/containers/mysql.configured
+
+{ 
+    echo ""; 
+    echo "AccessKey: $MINIO_ACCESS_KEY";
+    echo "SecretKey: $MINIO_SECRET_KEY";
+    echo "Region:    us-east-1";
+    echo "SQS ARNs:  <none>";
+    echo ""; 
+    echo "Browser Access:";
+    echo "   $S3_BROWSER_URL";
+    echo ""; 
+    echo "Endpoint:";
+    echo "   $S3_ENDPOINT";
+    echo ""; 
+} > /opt/daspanel/data/$DASPANEL_GUUID/containers/s3.configured
 
 exec su-exec daspanel:daspanel /usr/bin/minio server "/opt/daspanel/data"
 
