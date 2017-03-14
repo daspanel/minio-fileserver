@@ -47,9 +47,34 @@ Released by Abner G Jacobsen, Sun 27 Nov 2016 -
 [see the diff](https://github.com/admindaspanel/minio-fileserver/compare/...#diff)
 ______________
 
-### 0.2.4
+### minio-fileserver-0.2.4
 __Changes__
 
+- See changes in CHANGELOG.md
+- bumped to version 0.2.4
+- See changes in CHANGELOG.md
+- bumped to version 0.2.3
+- See changes in CHANGELOG.md
+- bumped to version 0.2.2
+- Minio daemon servcer running as uid:gid == daspanel:daspanel
+- Optimized docker container layers putting all ENV setting in one command inside Dockerfile.
+- Added to .gitignore and .dockerignore additional files and dirs
+
+__Contributors__
+
+- Abner G Jacobsen
+
+Released by Abner G Jacobsen, Thu 08 Dec 2016 -
+[see the diff](https://github.com/admindaspanel/minio-fileserver/compare/...#diff)
+______________
+
+### 0.2.5
+__Changes__
+
+- bumped to version 0.2.5
+- Make container compatible with new Daspanel init/configuration system
+- Save service configuration info.
+- See changes in CHANGELOG.md
 - bumped to version 0.2.4
 - See changes in CHANGELOG.md
 - bumped to version 0.2.3
@@ -74,8 +99,8 @@ __Contributors__
 
 - Abner G Jacobsen
 
-Released by Abner G Jacobsen, Thu 08 Dec 2016 -
-[see the diff](https://github.com/admindaspanel/minio-fileserver/compare/9a20715e4a9032e70720d1fae97b9b2df378a874...0.2.4#diff)
+Released by Abner G Jacobsen, Tue 14 Mar 2017 -
+[see the diff](https://github.com/admindaspanel/minio-fileserver/compare/9a20715e4a9032e70720d1fae97b9b2df378a874...0.2.5#diff)
 ______________
 
 
