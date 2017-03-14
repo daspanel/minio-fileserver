@@ -1,4 +1,4 @@
-FROM daspanel/alpine-base-edge
+FROM daspanel/alpine-base
 MAINTAINER Abner G Jacobsen - http://daspanel.com <admin@daspanel.com>
 
 # Set default env variables
@@ -9,13 +9,10 @@ ENV \
     # Timezone
     TZ="UTC" \
 
-    # S6 overlay version
-    S6_OVERLAY_VERSION=v1.18.1.5 \
-
     # Minio settings
     MINIO_PATH=github.com/minio/minio \
     MINIO_REPO=https://github.com/minio/minio.git \
-    MINIO_BRANCH=master \
+    MINIO_BRANCH=release \
     GOPATH=/usr/local \
     GO17VENDOREXPERIMENT=1
 
@@ -29,14 +26,14 @@ RUN set -ex \
         /usr/local/src/${MINIO_PATH} \
   
     && cd /usr/local/src/${MINIO_PATH} \
-    && go build -o /usr/bin/minio \
+    && go build -o /usr/sbin/minio \
 
     && apk del .build-deps \
     
     && rm -rf \
         /var/cache/apk/* \
         /usr/local/*
-    
+   
 
 VOLUME ["/opt/daspanel/data", "/opt/daspanel/log"]
 

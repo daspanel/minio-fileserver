@@ -1,21 +1,24 @@
 #!/usr/bin/with-contenv sh
 
-# unless this has already been defined, set
-if [ -z "$DASPANEL_HOST" ]; then
-    export DASPANEL_HOST="daspanel.site"
+# Installation UUID must be informed
+if [ -z "$DASPANEL_SYS_UUID" ]; then
+    echo "***"
+    echo "ERROR: You must set the env variable DASPANEL_SYS_UUID to a valid UUID"
+    echo "***"
+    exit 1
 fi
-S3_BROWSER_URL="http://s3.svc.$DASPANEL_HOST"
-S3_ENDPOINT="http://s3.svc.$DASPANEL_HOST"
+
+export DASPANEL_SYS_HOSTNAME=`cat /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json | /usr/bin/jq -r '.sys.hostname'`
+export DASPANEL_SYS_PASSWORD=`cat /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json | /usr/bin/jq -r '.sys.password'`
+
+export S3_BROWSER_URL="http://s3.svc.$DASPANEL_SYS_HOSTNAME"
+export S3_ENDPOINT="http://s3.svc.$DASPANEL_SYS_HOSTNAME"
 
 # Setup Minio credentials
-export MINIO_ACCESS_KEY=${DASPANEL_GUUID:0:20}
-export MINIO_SECRET_KEY="$DASPANEL_MASTER_PASSWORD"
+export MINIO_ACCESS_KEY=${DASPANEL_SYS_UUID:0:20}
+export MINIO_SECRET_KEY="$DASPANEL_SYS_PASSWORD"
 
-S3_BROWSER_URL="http://s3.svc.$DASPANEL_HOST"
-S3_ENDPOINT="http://s3.svc.$DASPANEL_HOST"
-
-touch /opt/daspanel/data/$DASPANEL_GUUID/containers/mysql.configured
-
+mkdir -p /opt/daspanel/data/$DASPANEL_GUUID/containers
 { 
     echo ""; 
     echo "AccessKey: $MINIO_ACCESS_KEY";
@@ -31,5 +34,5 @@ touch /opt/daspanel/data/$DASPANEL_GUUID/containers/mysql.configured
     echo ""; 
 } > /opt/daspanel/data/$DASPANEL_GUUID/containers/s3.configured
 
-exec su-exec daspanel:daspanel /usr/bin/minio server "/opt/daspanel/data"
+exec su-exec daspanel:daspanel /usr/sbin/minio server "/opt/daspanel/data"
 
