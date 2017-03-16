@@ -18,7 +18,7 @@ export S3_ENDPOINT="http://s3.svc.$DASPANEL_SYS_HOSTNAME"
 export MINIO_ACCESS_KEY=${DASPANEL_SYS_UUID:0:20}
 export MINIO_SECRET_KEY="$DASPANEL_SYS_PASSWORD"
 
-mkdir -p /opt/daspanel/data/$DASPANEL_GUUID/containers
+mkdir -p /opt/daspanel/data/$DASPANEL_SYS_UUID/containers
 { 
     echo ""; 
     echo "AccessKey: $MINIO_ACCESS_KEY";
@@ -32,7 +32,7 @@ mkdir -p /opt/daspanel/data/$DASPANEL_GUUID/containers
     echo "Endpoint:";
     echo "   $S3_ENDPOINT";
     echo ""; 
-} > /opt/daspanel/data/$DASPANEL_GUUID/containers/s3.configured
+} > /opt/daspanel/data/$DASPANEL_SYS_UUID/containers/s3.configured
 
 exec su-exec daspanel:daspanel /usr/sbin/minio server "/opt/daspanel/data"
 

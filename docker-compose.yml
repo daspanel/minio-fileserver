@@ -1,9 +1,6 @@
 version: '2'
 services:
     daspanel-minio-fileserver:
-        build:
-            context: .
-            dockerfile: Dockerfile
         image: daspanel/minio-fileserver
         volumes:
             - ./data:/opt/daspanel/data
