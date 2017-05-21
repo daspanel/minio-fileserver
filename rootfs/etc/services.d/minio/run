@@ -8,31 +8,5 @@ if [ -z "$DASPANEL_SYS_UUID" ]; then
     exit 1
 fi
 
-export DASPANEL_SYS_HOSTNAME=`cat /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json | /usr/bin/jq -r '.sys.hostname'`
-export DASPANEL_SYS_PASSWORD=`cat /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json | /usr/bin/jq -r '.sys.password'`
-
-export S3_BROWSER_URL="http://s3.svc.$DASPANEL_SYS_HOSTNAME"
-export S3_ENDPOINT="http://s3.svc.$DASPANEL_SYS_HOSTNAME"
-
-# Setup Minio credentials
-export MINIO_ACCESS_KEY=${DASPANEL_SYS_UUID:0:20}
-export MINIO_SECRET_KEY="$DASPANEL_SYS_PASSWORD"
-
-mkdir -p /opt/daspanel/data/$DASPANEL_SYS_UUID/containers
-{ 
-    echo ""; 
-    echo "AccessKey: $MINIO_ACCESS_KEY";
-    echo "SecretKey: $MINIO_SECRET_KEY";
-    echo "Region:    us-east-1";
-    echo "SQS ARNs:  <none>";
-    echo ""; 
-    echo "Browser Access:";
-    echo "   $S3_BROWSER_URL";
-    echo ""; 
-    echo "Endpoint:";
-    echo "   $S3_ENDPOINT";
-    echo ""; 
-} > /opt/daspanel/data/$DASPANEL_SYS_UUID/containers/s3.configured
-
-exec su-exec daspanel:daspanel /usr/sbin/minio server "/opt/daspanel/data"
+exec su-exec daspanel:daspanel /usr/sbin/minio --config-dir=/etc/minio server "/opt/daspanel/data"
 
