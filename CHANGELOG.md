@@ -84,9 +84,31 @@ Released by Abner G Jacobsen, Tue 14 Mar 2017 -
 [see the diff](https://github.com/admindaspanel/minio-fileserver/compare/...#diff)
 ______________
 
-### 0.2.6
+### minio-fileserver-0.2.6
 __Changes__
 
+- See changes in CHANGELOG.md
+- bumped to version 0.2.6
+- Small fix
+
+__Contributors__
+
+- Abner G Jacobsen
+
+Released by Abner G Jacobsen, Wed 15 Mar 2017 -
+[see the diff](https://github.com/admindaspanel/minio-fileserver/compare/...#diff)
+______________
+
+### 0.3.0
+__Changes__
+
+- bumped to version 0.3.0
+- Modified version numbering system.
+- Merge pull request #1 from daspanel/sites-config
+  
+  Modified container initialization to get system settings using an API call
+- Modified container initialization to get system settings using an API call.
+- See changes in CHANGELOG.md
 - bumped to version 0.2.6
 - Small fix
 - See changes in CHANGELOG.md
@@ -117,9 +139,10 @@ __Changes__
 __Contributors__
 
 - Abner G Jacobsen
+- admindaspanel
 
-Released by Abner G Jacobsen, Wed 15 Mar 2017 -
-[see the diff](https://github.com/admindaspanel/minio-fileserver/compare/9a20715e4a9032e70720d1fae97b9b2df378a874...0.2.6#diff)
+Released by Abner G Jacobsen, Thu 22 Jun 2017 -
+[see the diff](https://github.com/admindaspanel/minio-fileserver/compare/9a20715e4a9032e70720d1fae97b9b2df378a874...0.3.0#diff)
 ______________
 
 
