@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -x
+
+# Install minimal packages
+apk add --update --no-cache ca-certificates wget tzdata unzip 'su-exec>=0.2' \
+    libcap mailcap ssmtp curl tar bash
+
+# Create folder is in $PATH by default but isn't created by default
+mkdir -p /usr/local/sbin
+
+mkdir -p /var/run

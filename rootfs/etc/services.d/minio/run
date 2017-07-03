@@ -2,9 +2,7 @@
 
 # Installation UUID must be informed
 if [ -z "$DASPANEL_SYS_UUID" ]; then
-    echo "***"
-    echo "ERROR: You must set the env variable DASPANEL_SYS_UUID to a valid UUID"
-    echo "***"
+    echo "[DASPANEL-$DASPANEL_CONTAINER_TYPE] ERROR: You must set the env variable DASPANEL_SYS_UUID to a valid UUID"
     exit 1
 fi
 

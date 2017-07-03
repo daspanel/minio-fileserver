@@ -1,0 +1,9 @@
+#!/bin/sh
+
+PKGS=$1
+
+set -x
+
+# Install Distro packages
+apk add --no-cache --update $PKGS
+

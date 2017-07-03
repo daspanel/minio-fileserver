@@ -1,32 +1,34 @@
 #!/usr/bin/with-contenv sh
 
+# Set the type of this container
+export DASPANEL_CONTAINER_TYPE="minio-fileserver"
+printf $DASPANEL_CONTAINER_TYPE > /var/run/s6/container_environment/DASPANEL_CONTAINER_TYPE
+
 # Installation UUID must be informed
 if [ -z "$DASPANEL_SYS_UUID" ]; then
-    echo "***"
-    echo "ERROR: You must set the env variable DASPANEL_SYS_UUID to a valid UUID"
-    echo "***"
+    echo "[DASPANEL-$DASPANEL_CONTAINER_TYPE] ERROR: You must set the env variable DASPANEL_SYS_UUID to a valid UUID"
     exit 1
 fi
 
 case "$DASPANEL_WAIT_FOR_API" in
     YES|yes|Yes)
-        echo "[DASPANEL] Waiting 60 seconds for API: $0" >&2
+        echo "[DASPANEL-$DASPANEL_CONTAINER_TYPE] Waiting 60 seconds for API: $0" >&2
         /opt/daspanel/bin/wait-for-api -t 60 $DASPANEL_SYS_APISERVER/info/status
         result=$?
         if [ ! $result -eq 0 ] ; then
-            echo "[DASPANEL] Can not connect to API: $DASPANEL_SYS_APISERVER/info/status" >&2
+            echo "[DASPANEL-$DASPANEL_CONTAINER_TYPE] Can not connect to API: $DASPANEL_SYS_APISERVER/info/status" >&2
             exit 1
         fi
         ;;
     *) 
-        echo "[DASPANEL] Container not need to wait API become online: $0" >&2
+        echo "[DASPANEL-$DASPANEL_CONTAINER_TYPE] Container not need to wait API become online: $0" >&2
         exit 1
         ;;
 esac
 
 # Generate service configuration
 mkdir -p /etc/minio/certs/CAs
-/usr/bin/gomplate -d cfg=$DASPANEL_SYS_APISERVER/tenants/$DASPANEL_SYS_UUID \
+/opt/daspanel/bin/gomplate -d cfg=$DASPANEL_SYS_APISERVER/tenants/$DASPANEL_SYS_UUID \
     -H "cfg=Authorization: $DASPANEL_SYS_APIKEY" \
     < /opt/daspanel/conf-templates/minio/config.json.tmpl \
     >  /etc/minio/config.json    
