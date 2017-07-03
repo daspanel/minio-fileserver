@@ -3,17 +3,24 @@
 ### minio-fileserver-0.1.1
 __Changes__
 
-- See changes in CHANGELOG.md
-- bumped to version 0.1.1
-- Small docs changes
-- first commit
+
+Released by N/A, Mon 03 Jul 2017 -
+[see the diff](https://github.com/admindaspanel/minio-fileserver/compare/...#diff)
+______________
+
+### 0.4.0
+__Changes__
+
+- bumped to version 0.4.0
+- Removed dependence from daspanel/alpine-base.
 
 __Contributors__
 
 - Abner G Jacobsen
+- admindaspanel
 
-Released by Abner G Jacobsen, Thu 08 Sep 2016 -
-[see the diff](https://github.com/admindaspanel/minio-fileserver/compare/...#diff)
+Released by Abner G Jacobsen, Mon 03 Jul 2017 -
+[see the diff](https://github.com/admindaspanel/minio-fileserver/compare/0.3.0...0.4.0#diff)
 ______________
 
 ### minio-fileserver-0.2.0
@@ -102,6 +109,7 @@ ______________
 ### 0.3.0
 __Changes__
 
+- See changes in CHANGELOG.md
 - bumped to version 0.3.0
 - Modified version numbering system.
 - Merge pull request #1 from daspanel/sites-config
