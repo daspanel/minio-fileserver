@@ -4,23 +4,38 @@
 __Changes__
 
 
-Released by N/A, Mon 03 Jul 2017 -
+Released by N/A, Mon 27 Nov 2017 -
 [see the diff](https://github.com/admindaspanel/minio-fileserver/compare/...#diff)
 ______________
 
-### 0.4.0
+### minio-fileserver-0.2.6
 __Changes__
 
-- bumped to version 0.4.0
-- Removed dependence from daspanel/alpine-base.
+- See changes in CHANGELOG.md
+- bumped to version 0.2.6
+- Small fix
+
+__Contributors__
+
+- Abner G Jacobsen
+
+Released by Abner G Jacobsen, Wed 15 Mar 2017 -
+[see the diff](https://github.com/admindaspanel/minio-fileserver/compare/...#diff)
+______________
+
+### 0.5.0
+__Changes__
+
+- bumped to version 0.5.0
+- Minio upgraded to latest version. Added support to S3 virtual-host-style requests.
 
 __Contributors__
 
 - Abner G Jacobsen
 - admindaspanel
 
-Released by Abner G Jacobsen, Mon 03 Jul 2017 -
-[see the diff](https://github.com/admindaspanel/minio-fileserver/compare/0.3.0...0.4.0#diff)
+Released by Abner G Jacobsen, Mon 27 Nov 2017 -
+[see the diff](https://github.com/admindaspanel/minio-fileserver/compare/0.4.0...0.5.0#diff)
 ______________
 
 ### minio-fileserver-0.2.0
@@ -91,19 +106,19 @@ Released by Abner G Jacobsen, Tue 14 Mar 2017 -
 [see the diff](https://github.com/admindaspanel/minio-fileserver/compare/...#diff)
 ______________
 
-### minio-fileserver-0.2.6
+### 0.4.0
 __Changes__
 
 - See changes in CHANGELOG.md
-- bumped to version 0.2.6
-- Small fix
+- bumped to version 0.4.0
+- Removed dependence from daspanel/alpine-base.
 
 __Contributors__
 
 - Abner G Jacobsen
 
-Released by Abner G Jacobsen, Wed 15 Mar 2017 -
-[see the diff](https://github.com/admindaspanel/minio-fileserver/compare/...#diff)
+Released by Abner G Jacobsen, Mon 03 Jul 2017 -
+[see the diff](https://github.com/admindaspanel/minio-fileserver/compare/0.3.0...0.4.0#diff)
 ______________
 
 ### 0.3.0
