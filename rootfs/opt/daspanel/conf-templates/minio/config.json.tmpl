@@ -1,11 +1,12 @@
 {
-	"version": "18",
+	"version": "20",
 	"credential": {
 		"accessKey": "{{ (datasource "cfg").s3.access_key }}",
 		"secretKey": "{{ (datasource "cfg").s3.secret_key }}"
 	},
 	"region": "{{ (datasource "cfg").s3.region }}",
 	"browser": "on",
+	"domain": "s3.svc.{{ (datasource "cfg").sys.hostname }}",
 	"logger": {
 		"console": {
 			"enable": true
